@@ -47,7 +47,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content == "fuck dig thomas" or "Fuck dig Thomas!":
+    if message.content == "fuck dig thomas":
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send("ja FUCK dig thomas")
     
