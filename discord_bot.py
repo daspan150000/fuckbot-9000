@@ -37,8 +37,8 @@ async def joke(context):
     await general_channel.send(insult.text)
 
     
-@client.command(name = "clear")
-async def clear(context, amount=5):
+@client.command(name="delete")
+async def delete(context):
     await context.channel.purge(limit = 1)
 
     
@@ -56,8 +56,8 @@ async def on_message(message):
     if message.content == "fuck dig thomas":
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send("ja FUCK dig thomas")
-    
     await client.process_commands(message)
+
 
 
 
