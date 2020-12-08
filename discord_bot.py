@@ -1,5 +1,5 @@
 # program version "1.0.0"
-# social ovalen id: 785663356689448962
+# social ovalen id: 671001377899806783
 
 
 import discord
@@ -22,14 +22,15 @@ async def version(context):
 
 @client.event
 async def on_ready():
-    print("bot is ready")
+    general_channel = client.get_channel(671001377899806783)
+    await general_channel.send("ja FUCK dig thomas")
     
         
 
 @client.event
 async def on_message(message):
     if message.content == "fuck dig thomas":
-        general_channel = client.get_channel(785663356689448962)
+        general_channel = client.get_channel(671001377899806783)
         await general_channel.send("ja FUCK dig thomas")
     
     await client.process_commands(message)
