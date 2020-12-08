@@ -37,8 +37,8 @@ async def joke(context):
     await general_channel.send(insult.text)
 
     
-@client.command(name="delete")
-async def delete(context):
+@client.command(name="slet_besked")
+async def slet_besked(context):
     await context.channel.purge(limit = 1)
 
     
