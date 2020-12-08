@@ -34,7 +34,7 @@ async def joke(context):
     insult = driver.find_element_by_class_name("printed-insult")
     print(insult)
     general_channel = client.get_channel(671001377899806783)
-    await general_channel.send(insult)
+    await general_channel.send(insult.text)
 
 
 
