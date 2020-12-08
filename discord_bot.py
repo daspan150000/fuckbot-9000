@@ -24,6 +24,8 @@ async def version(context):
 async def on_ready():
     general_channel = client.get_channel(671001377899806783)
     await general_channel.send("ja FUCK dig thomas")
+
+    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game("pik"))
     
         
 
