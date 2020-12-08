@@ -5,6 +5,8 @@
 import discord
 from discord.ext import commands
 import os
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 
 #client
@@ -20,11 +22,20 @@ async def version(context):
 
     await context.message.channel.send(embed = myEmbed)
 
+@client.command(name="joke")
+async def joke(context):
+
+    search = driver.find_element_by_css_selector("body > div.main-content > div.body-content.section > div:nth-child(2) > div.insult-form.col-five > input")
+    search.send_keys("thomas")
+	search.send_keys(Keys.RETURN)
+	insult = driver.find_element_by_class_name("printed-insult")
+    general_channel = client.get_channel(671001377899806783)
+    await general_channel.send(insult)
+
+
 @client.event
 async def on_ready():
-    general_channel = client.get_channel(671001377899806783)
-    await general_channel.send("ja FUCK dig thomas")
-
+    
     await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game("pik"))
     
         
