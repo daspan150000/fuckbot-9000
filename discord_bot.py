@@ -39,7 +39,7 @@ async def joke(context):
     
 @client.command(name = "clear")
 async def clear(context, amount=5):
-    await context.channel.purge(limit(amount))
+    await context.channel.purge(limit = 1)
 
     
 
