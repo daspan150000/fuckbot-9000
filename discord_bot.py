@@ -48,9 +48,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     File = open("fuck.txt", "r")
-    read = File.readlines()
+    read = File.read()
     File.close()
-    if " " + message.content + " " in read:
+    if message.content in read:
         print("yes")
     else:
         print("no")
