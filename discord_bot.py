@@ -27,7 +27,7 @@ def is_me(m):
     return m.author == client.user
 
 @client.command(name="slet_besked")
-async def slet_besked(context, args):
+async def slet_besked(context, args : int):
     await context.channel.purge(limit=args, check=is_me)
 
     
