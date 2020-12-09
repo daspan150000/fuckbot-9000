@@ -29,7 +29,7 @@ def is_me(m):
 
 @client.command(name="slet_besked")
 async def slet_besked(context):
-    await context.channel.purge(limit = 20, check = is_me)
+    await context.channel.purge(limit = 100, check = is_me)
 
     
 
@@ -44,12 +44,12 @@ async def on_ready():
     
         
 
-@client.event
-async def on_message(message):
-    answer = "ja FUCK dig thomas"
-    general_channel = client.get_channel(671001377899806783)
-    await general_channel.send(answer)
-    await client.process_commands(message)
+#@client.event
+#async def on_message(message):
+#    answer = "ja FUCK dig thomas"
+#    general_channel = client.get_channel(671001377899806783)
+#    await general_channel.send(answer)
+#    await client.process_commands(message)
 
 
 
