@@ -50,12 +50,12 @@ async def on_ready():
 async def on_message(message):
     if message == "fuck dig thomas":
         answer = "ja FUCK dig thomas"
-        general_channel = client.get_channel(671001377899806783)
+        general_channel = client.get_channel(785663356689448962)
         await general_channel.send(answer)
         await client.process_commands(message)
 
 
-
+#671001377899806783
 
 
 #run the client on the server
