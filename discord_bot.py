@@ -9,6 +9,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import asyncio
 
+all_ways_to_say_it = ["fuck dig thomas", "Fuck dig Thomas", "Fuck Dig Thomas", "FUCK DIG THOMAS", "Fuck dig Thomas!", "FUCK DIG THOMAS!"]
 
 #client
 client = commands.Bot(command_prefix = "--")
@@ -28,8 +29,7 @@ def is_me(m):
 
 @client.command(name="slet_besked")
 async def slet_besked(context, args : int):
-    print(args)
-    await context.channel.purge(limit=args, check=is_me)
+    await context.channel.purge(limit = args, check = is_me)
 
     
 
@@ -46,9 +46,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.content == "fuck dig thomas":
-        answer = "ja FUCK dig thomas"
-        general_channel = client.get_channel(671001377899806783)
+    global all_ways_to_say_it
+    for way in all_ways_to_say_it:
+        if message.content == way:
+            answer = "ja FUCK dig thomas"
+            general_channel = client.get_channel(671001377899806783)
         await general_channel.send(answer)
     await client.process_commands(message)
 
@@ -58,3 +60,4 @@ async def on_message(message):
 
 #run the client on the server
 client.run(os.environ["discord_token"])
+
