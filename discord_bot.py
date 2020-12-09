@@ -25,7 +25,7 @@ async def version(context):
 @client.command(name="joke")
 async def joke(context):
     
-    path = "fuckbot-9000\\chromedriver"
+    path = "chromedriver"
     driver = webdriver.Chrome(path)
     driver.get("https://intellisult.com/#")
     search = driver.find_element_by_css_selector("body > div.main-content > div.body-content.section > div:nth-child(2) > div.insult-form.col-five > input")
