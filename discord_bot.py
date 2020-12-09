@@ -56,9 +56,14 @@ async def on_message(message):
         await general_channel.send(answer)
     await client.process_commands(message)
 
+    if message.content.lower() == "gamer":
+        åh_gamer = "århh GAMER!"
+        general_channel = client.get_channel(671001377899806783)
+        await general_channel.send(åh_gamer)
+    await client.process_commands(message)
 
 #671001377899806783 fuck dig thomas
-#785663356689448962 test server
+
 
 #run the client on the server
 client.run(os.environ["discord_token"])
