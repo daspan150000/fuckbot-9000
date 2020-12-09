@@ -46,12 +46,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    global all_ways_to_say_it
-    for way in all_ways_to_say_it:
-        if message.content == way:
-            answer = "ja FUCK dig thomas"
-            general_channel = client.get_channel(671001377899806783)
-        await general_channel.send(answer)
+    answer = "ja FUCK dig thomas"
+    general_channel = client.get_channel(671001377899806783)
+    await general_channel.send(answer)
     await client.process_commands(message)
 
 
