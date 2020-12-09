@@ -32,14 +32,14 @@ async def joke(context):
     search.send_keys("thomas")
     search.send_keys(Keys.RETURN)
     insult = driver.find_element_by_class_name("printed-insult")
-    print(insult)
+    print(insult.text)
     general_channel = client.get_channel(671001377899806783)
     await general_channel.send(insult.text)
 
     
 @client.command(name="slet_besked")
 async def slet_besked(context):
-    await context.channel.purge(limit = 1)
+    await context.channel.purge(limit = 1, check = "ja FUCK dig thomas")
 
     
 
