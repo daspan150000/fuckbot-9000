@@ -7,6 +7,7 @@ from discord.ext import commands
 import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+import asyncio
 
 
 #client
@@ -22,24 +23,12 @@ async def version(context):
 
     await context.message.channel.send(embed = myEmbed)
 
-@client.command(name="joke")
-async def joke(context):
-    
-    path = "C:\\Users\\david\\Desktop\\fuckbot-9000\\chromedriver.exe"
-    driver = webdriver.Chrome(path)
-    driver.get("https://intellisult.com/#")
-    search = driver.find_element_by_css_selector("body > div.main-content > div.body-content.section > div:nth-child(2) > div.insult-form.col-five > input")
-    search.send_keys("thomas")
-    search.send_keys(Keys.RETURN)
-    insult = driver.find_element_by_class_name("printed-insult")
-    print(insult.text)
-    general_channel = client.get_channel(671001377899806783)
-    await general_channel.send(insult.text)
+def is_me(m):
+    return m.autor == client.user
 
-    
 @client.command(name="slet_besked")
 async def slet_besked(context):
-    await context.channel.purge(limit = 1, check = "ja FUCK dig thomas")
+    await context.channel.purge(limit=100, check=is_me)
 
     
 
@@ -54,8 +43,9 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.content == "fuck dig thomas":
+        answer = "ja FUCK dig thomas"
         general_channel = client.get_channel(671001377899806783)
-        await general_channel.send("ja FUCK dig thomas")
+        await general_channel.send(answer)
     await client.process_commands(message)
 
 
