@@ -16,7 +16,7 @@ client = commands.Bot(command_prefix = "--")
 async def version(context):
     
     myEmbed = discord.Embed(title = "current version", description = "the bot is in version 1.0", color = 0x00ff00)
-    myEmbed.set_author(name = "David aka :3 uwu")
+    myEmbed.set_author(name = "fuckbot-9000")
     myEmbed.add_field(name = "code version", value = "v1.0.0", inline = False)
     myEmbed.add_field(name = "Date Released:", value = "8-12-2020", inline = False)
 
@@ -25,7 +25,7 @@ async def version(context):
 @client.command(name="joke")
 async def joke(context):
     
-    path = "C:\\Program Files (x86)\\chromedriver.exe"
+    path = "fuckbot-9000\\fornærmelser.xlxs"
     driver = webdriver.Chrome(path)
     driver.get("https://intellisult.com/#")
     search = driver.find_element_by_css_selector("body > div.main-content > div.body-content.section > div:nth-child(2) > div.insult-form.col-five > input")
