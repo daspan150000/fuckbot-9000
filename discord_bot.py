@@ -51,12 +51,9 @@ async def on_message(message):
     read = File.read()
     File.close()
     if message.content in read:
-        print("yes")
-    else:
-        print("no")
-        #answer = "ja FUCK dig thomas"
-        #general_channel = client.get_channel(671001377899806783)
-        #await general_channel.send(answer)
+        answer = "ja FUCK dig thomas"
+        general_channel = client.get_channel(671001377899806783)
+        await general_channel.send(answer)
     await client.process_commands(message)
 
 
