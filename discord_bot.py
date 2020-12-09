@@ -24,7 +24,7 @@ async def version(context):
     await context.message.channel.send(embed = myEmbed)
 
 def is_me(m):
-    return m.autor == client.user
+    return m.author == client.user
 
 @client.command(name="slet_besked")
 async def slet_besked(context):
