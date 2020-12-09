@@ -2,6 +2,7 @@
 # social ovalen id: 671001377899806783
 
 
+
 import discord
 from discord.ext import commands
 import os
@@ -9,7 +10,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import asyncio
 
-all_ways_to_say_it = ["fuck dig thomas", "Fuck dig Thomas", "Fuck Dig Thomas", "FUCK DIG THOMAS", "Fuck dig Thomas!", "FUCK DIG THOMAS!"]
+
 
 #client
 client = commands.Bot(command_prefix = "--")
@@ -28,10 +29,8 @@ def is_me(m):
     return m.author == client.user
 
 @client.command(name="slet_besked")
-async def slet_besked(context, arg:int):
-    amount = arg
-    print(amount)
-    await context.channel.purge(limit = amount, check = is_me)
+async def slet_besked(context):
+    await context.channel.purge(limit = 100, check = is_me)
 
     
 
@@ -48,11 +47,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message == "fuck dig thomas":
+    ways = ["fuck dig thomas", "Fuck dig Thomas", "Fuck Dig Thomas", "FUCK DIG THOMAS", "Fuck dig Thomas!", "FUCK DIG THOMAS!"]
+    if message.content in ways:
         answer = "ja FUCK dig thomas"
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(answer)
-        await client.process_commands(message)
+    await client.process_commands(message)
 
 
 #671001377899806783 fuck dig thomas
