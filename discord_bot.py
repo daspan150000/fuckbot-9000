@@ -47,11 +47,14 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    ways = ["fuck dig thomas", "Fuck dig Thomas", "Fuck Dig Thomas", "FUCK DIG THOMAS", "Fuck dig Thomas!", "FUCK DIG THOMAS!"]
-    if message.content in ways:
-        answer = "ja FUCK dig thomas"
-        general_channel = client.get_channel(671001377899806783)
-        await general_channel.send(answer)
+    File = open("fuck.txt", "r")
+    read = File.readlines()
+    File.close()
+    if message.content + "\n" in read:
+        print("yes")
+        #answer = "ja FUCK dig thomas"
+        #general_channel = client.get_channel(671001377899806783)
+        #await general_channel.send(answer)
     await client.process_commands(message)
 
 
