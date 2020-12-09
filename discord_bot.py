@@ -52,7 +52,7 @@ async def on_message(message):
         answer = "ja FUCK dig thomas"
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(answer)
-    await client.process_commands(message)
+        await client.process_commands(message)
 
 
 #671001377899806783 fuck dig thomas
