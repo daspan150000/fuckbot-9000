@@ -50,8 +50,10 @@ async def on_message(message):
     File = open("fuck.txt", "r")
     read = File.readlines()
     File.close()
-    if message.content + "\n" in read:
+    if message.content + " " in read:
         print("yes")
+    else:
+        print("no")
         #answer = "ja FUCK dig thomas"
         #general_channel = client.get_channel(671001377899806783)
         #await general_channel.send(answer)
