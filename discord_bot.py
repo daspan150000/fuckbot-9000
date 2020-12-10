@@ -64,21 +64,20 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if not message.author.client.bot:
-        File = open("fuck.txt", "r")
-        read = File.read()
-        File.close()
-        if message.content.lower() in read:
-            answer = "ja FUCK dig thomas"
-            general_channel = client.get_channel(671001377899806783)
-            await general_channel.send(answer)
-        await client.process_commands(message)
+    File = open("fuck.txt", "r")
+    read = File.read()
+    File.close()
+    if message.content.lower() in read:
+        answer = "ja FUCK dig thomas"
+        general_channel = client.get_channel(671001377899806783)
+        await general_channel.send(answer)
+    await client.process_commands(message)
 
-        if message.content.lower() == "gamer":
-            åh_gamer = "århh GAMER!"
-            general_channel = client.get_channel(671001377899806783)
-            await general_channel.send(åh_gamer)
-        await client.process_commands(message)
+    if message.content.lower() == "gamer":
+        åh_gamer = "århh GAMER!"
+        general_channel = client.get_channel(671001377899806783)
+        await general_channel.send(åh_gamer)
+    await client.process_commands(message)
 
 #671001377899806783 fuck dig thomas
 
