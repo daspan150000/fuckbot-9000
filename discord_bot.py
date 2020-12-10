@@ -49,7 +49,7 @@ async def slet_besked(context):
 async def on_ready():
     seconds = time.time()
     local_time = time.localtime(seconds)
-    current_time = str(local_time.tm_hour) + str(local_time.tm_min) + str(local_time.tm_sec)
+    current_time = str(local_time.tm_hour) + " " + str(local_time.tm_min) + " " + str(local_time.tm_sec)
     print(current_time)
     await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = "pik"))
 
