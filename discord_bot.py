@@ -43,7 +43,8 @@ def is_me(m):
 
 @client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
 @commands.has_permissions(manage_messages = True)
-async def slet_besked(context, arg1):
+async def slet_besked(context, arg1:int):
+    print(arg1)
     await context.channel.purge(limit = arg1, check = is_me)
 
 
