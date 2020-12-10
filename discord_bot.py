@@ -28,13 +28,12 @@ async def version(context):
 
 @client.command(name = "hjælp")
 async def hjælp(context):
-    if not context.author.client:
-        com_embed = discord.Embed(title = "kommandoer", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
-        com_embed.set_author(name = "fuckbot-9000")
-        com_embed.add_field(name = "--version", value = "viser hvilken version botten er i" , inline = False)
-        com_embed.add_field(name = "--slet_besked", value = "sletter bottens sidste 100 beskeder. virker godt mod spam" , inline = False)
-        com_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på \n'fuck dig thomas' er en sætning botten vil reagere på" , inline = False)
-        com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
+    com_embed = discord.Embed(title = "kommandoer", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
+    com_embed.set_author(name = "fuckbot-9000")
+    com_embed.add_field(name = "--version", value = "viser hvilken version botten er i" , inline = False)
+    com_embed.add_field(name = "--slet_besked", value = "sletter bottens sidste 100 beskeder. virker godt mod spam" , inline = False)
+    com_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på \n'fuck dig thomas' er en sætning botten vil reagere på" , inline = False)
+    com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
     await context.message.channel.send(embed = com_embed)
 
 
