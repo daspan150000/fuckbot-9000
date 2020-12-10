@@ -28,19 +28,19 @@ async def version(context):
 
 @client.command(name = "kommandoer")
 async def kommandoer(context):
-    com_embed = discord.Embed(title = "commands", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
+    com_embed = discord.Embed(title = "kommandoer", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
     com_embed.set_author(name = "fuckbot-9000")
-    com_embed.add_field(name = "--version", value = "" , inline = False)
-    com_embed.add_field(name = "viser hvilken version botten er i", value = "" , inline = False)
-    com_embed.add_field(name = "slet_besked", value = "" , inline = False)
-    com_embed.add_field(name = "sletter bottens sidste 100 beskeder. virker godt mod spam", value = "" , inline = False)
+    com_embed.add_field(name = "--version", value = "|" , inline = False)
+    com_embed.add_field(name = "viser hvilken version botten er i", value = "|" , inline = False)
+    com_embed.add_field(name = "slet_besked", value = "|" , inline = False)
+    com_embed.add_field(name = "sletter bottens sidste 100 beskeder. virker godt mod spam", value = "|" , inline = False)
 
     react_embed = discord.Embed(title = "reactioner", description = "disse beskeder reagere botten på", collor = 0xFF0000)
     react_embed.set_author(name = "fuckbot=9000")
-    react_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "" , inline = False)
-    react_embed.add_field(name = "'gamer' er en af ordene botten reagere på", value = "" , inline = False)
-    react_embed.add_field(name = "'fuck dig thomas' er en sætning botten vil reagere på", value = "" , inline = False)
-    react_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt, så slå dig løs. og fuck thomas.", value = "")
+    react_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "|" , inline = False)
+    react_embed.add_field(name = "'gamer' er en af ordene botten reagere på", value = "|" , inline = False)
+    react_embed.add_field(name = "'fuck dig thomas' er en sætning botten vil reagere på", value = "|" , inline = False)
+    react_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt, så slå dig løs. og fuck thomas.", value = "|")
 
 
     await context.message.channel.send(embed = com_embed)
