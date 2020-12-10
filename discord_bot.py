@@ -9,6 +9,7 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import asyncio
+import time
 
 
 
@@ -46,8 +47,13 @@ async def slet_besked(context):
 
 @client.event
 async def on_ready():
-    
-    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Streaming(name = "thomas værelse", url = "https://xn--thomas_vrelse-bgb.com/"))
+    seconds = time.time()
+    local_time = time.localtime(seconds)
+    current_time = local_time.tm_hour + local_time.tm_min + local_time.tm_sec
+    print(current_time)
+    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = "pik"))
+
+ 
     
         
 
