@@ -41,9 +41,16 @@ async def hjælp(context):
 def is_me(m):
     return m.author == client.user
 
-@client.command(name="slet_besked")
-async def slet_besked(context):
-    await context.channel.purge(limit = 2, check = is_me)
+@client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
+@commands.has_permissions(manage_messages = True)
+async def slet_besked(context, arg1):
+    await context.channel.purge(limit = arg1, check = is_me)
+
+
+@client.event
+async def on_command_error(context, error):
+    print(context.command.name + " was invoked incorrectly")
+    print(error)
 
 
 @client.event
