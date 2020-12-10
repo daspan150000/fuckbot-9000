@@ -26,21 +26,17 @@ async def version(context):
     await context.message.channel.send(embed = myEmbed)
 
 
-@client.command(name = "kommandoer")
-async def kommandoer(context):
+@client.command(name = "hjælp")
+async def hjælp(context):
     com_embed = discord.Embed(title = "kommandoer", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
     com_embed.set_author(name = "fuckbot-9000")
     com_embed.add_field(name = "--version", value = "viser hvilken version botten er i" , inline = False)
     com_embed.add_field(name = "slet_besked", value = "sletter bottens sidste 100 beskeder. virker godt mod spam" , inline = False)
-
-    react_embed = discord.Embed(title = "reactioner", description = "disse beskeder reagere botten på", collor = 0xFF0000)
-    react_embed.set_author(name = "fuckbot-9000")
-    react_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på" , inline = False)
-    react_embed.add_field(name = "'fuck dig thomas' er en sætning botten vil reagere på", value = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt, så slå dig løs. og fuck thomas." , inline = False)
+    com_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på \n'fuck dig thomas' er en sætning botten vil reagere på" , inline = False)
+    com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
 
 
     await context.message.channel.send(embed = com_embed)
-    await context.message.channel.send(embed = react_embed)
     
 
 def is_me(m):
