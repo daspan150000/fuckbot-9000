@@ -43,7 +43,7 @@ async def kommandoer(context):
     react_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt, så slå dig løs. og fuck thomas.", value = "")
 
 
-    await context.message.channel.send(mebed = com_embed)
+    await context.message.channel.send(embed = com_embed)
     await context.message.channel.send(embed = react_embed)
     
 
