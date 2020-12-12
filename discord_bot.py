@@ -89,7 +89,7 @@ async def on_message(message):
 
     
     fil = open("læg_dig.txt", "r")
-    læs = fil.open()
+    læs = fil.read()
     fil.close()
     if message.content.lower() in læs:
         læg_dig = "Ja læg dig HELT ned og sig undskyld Thomas"
