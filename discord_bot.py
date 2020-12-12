@@ -43,9 +43,9 @@ def is_me(m):
 
 @client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
 @commands.has_permissions(manage_messages = True)
-async def slet_besked(context, arg1:int):
+async def slet_besked(ctx, arg1:int):
     print(arg1)
-    await context.channel.purge(limit = arg1, check = is_me)
+    await ctx.channel.purge(limit = arg1, check = is_me)
 
 
 @client.event
@@ -86,6 +86,18 @@ async def on_message(message):
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(åh_gamer)
     await client.process_commands(message)
+
+    
+    fil = open("leg_dig.txt", "r")
+    læs = fil.open()
+    fil.close()
+    if message.content.lower() in læs:
+        læg_dig = "Ja læg dig HELT ned og sig undskyld Thomas"
+        general_channel = client.get_channel(671001377899806783)
+        await general_channel.send(læg_dig)
+    await client.process_commands(message)
+
+
 
 #671001377899806783 fuck dig thomas
 
