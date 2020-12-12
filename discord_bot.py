@@ -88,7 +88,7 @@ async def on_message(message):
     await client.process_commands(message)
 
     
-    fil = open("læg_dig.txt", "r")
+    fil = open("læg_dig", "r")
     læs = fil.read()
     fil.close()
     if message.content.lower() in læs:
