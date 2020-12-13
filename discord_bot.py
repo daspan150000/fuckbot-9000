@@ -112,7 +112,7 @@ async def ch_pr():
 
         await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = status))
 
-        await asyncio.sleep(10)
+        await asyncio.sleep(1800)
 
 client.loop.create_task(ch_pr())
 #671001377899806783 fuck dig thomas
