@@ -62,7 +62,7 @@ async def on_ready():
     File = open("activities", "r")
     read = File.read()
     File.close()
-    nr = random.randint(0, read.len())
+    nr = random.randint(0, len(read))
     print(nr)
     activity = read[nr]
     await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = activity))
