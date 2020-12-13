@@ -55,14 +55,13 @@ async def on_command_error(context, error):
     print(context.command.name + " was invoked incorrectly")
     print(error)
 
-activities = "kiks med thomas, pik, baseball med thomas løg"
+
 
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    nr = random.randint(0, len(activities))
-    print(nr)
-    activity = activities[nr]
+    activities = ["kiks med thomas", "pik", "baseball med thomas løg"]
+    activity = random.choice(activities)
     await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = activity))
 
 #seconds = time.time()
