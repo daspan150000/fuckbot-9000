@@ -60,8 +60,11 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    activities = ["kiks med thomas", "pik", "baseball med thomas løg"]
-    activity = random.choice(activities)
+    File = open("activities", "r")
+    read = File.read()
+    File.close()
+    activity = random.choice(read)
+    print(activity)
     await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = activity))
 
 #seconds = time.time()
