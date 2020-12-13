@@ -10,6 +10,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import asyncio
 import time
+import random
+
 
 
 
@@ -57,7 +59,13 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = "kiks med thomas"))
+    File = open("activities", "r")
+    read = File.read()
+    File.close()
+    nr = random.randint(0, read.len())
+    print(nr)
+    activity = read[nr]
+    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = activity))
 
 #seconds = time.time()
 #local_time = time.localtime(seconds)
