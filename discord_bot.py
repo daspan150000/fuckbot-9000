@@ -57,7 +57,7 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = "kiks med thomas' far"))
+    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = "kiks med thomas"))
 
 #seconds = time.time()
 #local_time = time.localtime(seconds)
