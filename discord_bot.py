@@ -60,10 +60,8 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    activities = ["pik", "baseball med thomas løg"]
-    activity = random.choice(activities)
-    print(activity)
-    await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = activity))
+    
+    
 
 #seconds = time.time()
 #local_time = time.localtime(seconds)
@@ -103,8 +101,20 @@ async def on_message(message):
         await general_channel.send(læg_dig)
     await client.process_commands(message)
 
+async def ch_pr():
+    await client.wait_until_ready()
 
+    activities = ["kiks med thomas", "pik", "baseball med thomas løg"]
 
+    while not client.is_closed():
+
+        status = random.choice(activities)
+
+        await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = status))
+
+        await asyncio.sleep(10)
+
+client.loop.create_task(ch_pr())
 #671001377899806783 fuck dig thomas
 
 
