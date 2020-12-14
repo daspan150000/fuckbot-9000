@@ -78,7 +78,7 @@ async def on_ready():
     insults = open("insults", "r")
     lines = insults.readlines()
     insults.close()
-    print(lines[1])
+    print(lines[0])
     
     
     
