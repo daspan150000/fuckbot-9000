@@ -46,9 +46,10 @@ async def roast(context, person):
     response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
     response_json = response.json()
     insult = response_json["insult"]
-    insults = open("insults", "w")
-    insults.write(insult)
-    insults.close()
+    with open("insults", "w") as insults:
+        print(insult)
+        insults.write(insult)
+        insults.close()
     
 
 
