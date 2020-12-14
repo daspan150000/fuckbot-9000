@@ -49,11 +49,7 @@ async def roast(context, person):
     insults = open("insults", "w")
     insults.write(insult)
     insults.close()
-    with open("insults", "a") as insults:
-        rand = random.randint(0, len(insults))
-        for i, line in enumerate():
-            if i == rand:
-                print(line)
+    
 
 
 
