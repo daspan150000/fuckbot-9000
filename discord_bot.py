@@ -64,7 +64,7 @@ async def on_command_error(context, error):
 async def on_ready():
     print("fuckbot-9000 is logged in")
     response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
-    insult = response.json("insult")
+    insult = response.json()
     print(insult["insult"])
     
 
