@@ -71,11 +71,11 @@ async def on_ready():
     response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
     response_json = response.json()
     insult = response_json["insult"]
-    insults = open("insults", "a")
+    insults = open("insults.txt", "a")
     insults.write(insult)
     insults.close()
 
-    insults = open("insults", "r")
+    insults = open("insults.txt", "r")
     lines = insults.readlines()
     insults.close()
     print(lines[0])
@@ -88,7 +88,7 @@ async def on_ready():
 #når (social-ovalen) får en besked
 @client.event
 async def on_message(message):
-    File = open("fuck", "r")
+    File = open("fuck.txt", "r")
     read = File.read()
     File.close()
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
@@ -105,7 +105,7 @@ async def on_message(message):
         await general_channel.send(åh_gamer)
     await client.process_commands(message)
     
-    fil = open("læg_dig", "r")
+    fil = open("læg_dig.txt", "r")
     læs = fil.read()
     fil.close()
     #hvis beskeden er "læg dig ned thomas", så skal botten svarer "Ja læg dig HELT ned og sig undskyld Thomas"
