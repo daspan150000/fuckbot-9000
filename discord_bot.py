@@ -41,16 +41,7 @@ async def hjælp(context):
         com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
     await context.message.channel.send(embed = com_embed)
 
-@client.command(name = "roast")
-async def roast(context, person):
-    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
-    response_json = response.json()
-    insult = response_json["insult"]
-    with open("insults", "w") as insults:
-        print(insult)
-        insults.write(insult)
-        insults.close()
-    
+
 
 
 
@@ -77,7 +68,14 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-
+    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
+    response_json = response.json()
+    insult = response_json["insult"]
+    with open("insults", "w") as insults:
+        print(insult)
+        insults.write(insult)
+        insults.close()
+    
     
 
 
