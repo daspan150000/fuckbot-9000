@@ -71,9 +71,16 @@ async def on_ready():
     response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
     response_json = response.json()
     insult = response_json["insult"]
-    insult = open("insults", "r")
-    lines.readlines()
-    prin(lines[2])
+    insults = open("insults", "a")
+    insults.write(insult)
+    insults.close()
+
+    insults = open("insults", "r")
+    lines = insults.readlines()
+    insults.close()
+    print(lines[2])
+    
+    
     
     
 
