@@ -41,6 +41,16 @@ async def hjælp(context):
         com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
     await context.message.channel.send(embed = com_embed)
 
+@client.command(name = "roast")
+async def roast(context, person):
+    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
+    response_json = response.json()
+    insult = response_json["insult"]
+    
+
+
+
+
 #hjælper funktion
 def is_me(m):
     return m.author == client.user
@@ -63,9 +73,13 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
-    insult = response.json()
-    print(insult["insult"])
+    with open("insults", "a") as insults:
+        insults.write(insults)
+        insults.close()
+        rand = random.randint(0, len(insults))
+        for i, line in enumerate():
+            if i == rand:
+                print(line)
     
 
 
@@ -101,7 +115,7 @@ async def on_message(message):
 
 
 
-        
+  
 
 
 #skift aktivitet en gang hver halve time
