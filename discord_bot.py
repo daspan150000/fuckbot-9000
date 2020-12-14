@@ -46,7 +46,14 @@ async def roast(context, person):
     response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
     response_json = response.json()
     insult = response_json["insult"]
-    
+    insults = open("insults", "w")
+    insults.write(insult)
+    insults.close()
+    with open("insults", "a") as insults:
+        rand = random.randint(0, len(insults))
+        for i, line in enumerate():
+            if i == rand:
+                print(line)
 
 
 
@@ -73,13 +80,7 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    with open("insults", "a") as insults:
-        insults.write(insults)
-        insults.close()
-        rand = random.randint(0, len(insults))
-        for i, line in enumerate():
-            if i == rand:
-                print(line)
+
     
 
 
