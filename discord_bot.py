@@ -77,9 +77,10 @@ async def on_ready():
 
     insults = open("insults.txt", "r")
     lines = insults.readlines()
+    print(len(lines))
     insults.close()
     rand = random.randint(0, len(lines))
-    print("thomas" + str(lines[rand]))
+    print("thomas " + str(lines[rand]))
     
     
     
