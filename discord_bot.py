@@ -71,10 +71,9 @@ async def on_ready():
     response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
     response_json = response.json()
     insult = response_json["insult"]
-    with open("insults", "a") as insults:
-        print(insult)
-        insults.write(insult)
-        insults.close()
+    insult = open("insults", "r")
+    lines.readlines()
+    prin(lines[2])
     
     
 
@@ -110,7 +109,10 @@ async def on_message(message):
     await client.process_commands(message)
 
 
-
+@client.command(name = "roast")
+async def roast(context, person):
+    
+    pass
   
 
 
