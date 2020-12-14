@@ -2,7 +2,7 @@
 # social ovalen id: 671001377899806783
 
 
-
+#husk at skrive på requirements
 import discord
 from discord.ext import commands, tasks
 import os
@@ -65,7 +65,7 @@ async def on_ready():
     print("fuckbot-9000 is logged in")
     response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
     insult = response.json("insult")
-    print(insult)
+    print(insult["insult"])
     
 
 
