@@ -75,12 +75,6 @@ async def on_ready():
     insults.write(insult)
     insults.close()
 
-    insults = open("insults.txt", "r")
-    lines = insults.readlines()
-    print(len(lines))
-    insults.close()
-    rand = random.randint(0, len(lines))
-    print("thomas " + str(lines[rand]))
     
     
     
@@ -95,6 +89,7 @@ async def on_message(message):
     File.close()
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
     if message.content.lower() in read:
+        print(message.content)
         answer = "ja FUCK dig thomas"
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(answer)
@@ -127,7 +122,7 @@ async def roast(context, person):
     rand = random.randint(0, len(lines))
     print("thomas " + str(lines[rand]))
     general_channel = client.get_channel(671001377899806783)
-    await general_channel.send(person + ", " + str(lines[rand]))
+    await general_channel.send(str(person) + ", " + str(lines[rand]))
     
     
   
