@@ -29,7 +29,7 @@ async def on_message(message):
     if message.content.lower() in fuck:
         print(message.content)
         myid = '<@173149463886561280>'
-        await message.channel.send(message.channel, ' : %s ja FUCK dig thomas ' % myid)
+        await message.channel.send(' : %s ja FUCK dig thomas ' % myid)
         #thomas_id = "@173149463886561280"
         #answer = str(thomas_id) + "ja fuck dig thomas"
         #context_channel = client.get_channel(message.channel.id)
