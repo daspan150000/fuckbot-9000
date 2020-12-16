@@ -89,8 +89,8 @@ async def on_message(message):
         context_chat = client.get_channel(message.channel.id)
         await context_chat.send(embed = com_embed)
 
-    channel = client.get_channel(message.channel.id)
-    if channel == "785602392288788480":
+    
+    if message.channel.id == "785602392288788480"
         if message.content.lower() == "--meme":
             reddit = praw.Reddit(client_id = os.environ["reddit_client_id"],
             client_secret = os.environ["reddit_client_secret"],
