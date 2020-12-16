@@ -106,13 +106,13 @@ async def on_message(message):
         await general_channel.send(læg_dig)
     await client.process_commands(message)
 
-roast_running = False
+
 
 @client.command(name = "roast")
-async def roast(context, person):
-    global roast_running
-    if not roast_running:
-        roast_running = True
+async def roast(context, person, times):
+    gange = 0
+    while gange <= times:
+        gange += 1
         insults = open("insults.txt", "r")
         lines = insults.readlines()
         print(len(lines))
@@ -122,7 +122,7 @@ async def roast(context, person):
         print(final_roast)
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(final_roast)
-        roast_running = False
+    
  
         
 
