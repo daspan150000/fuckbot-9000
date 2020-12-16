@@ -21,7 +21,6 @@ async def on_ready():
     print("fuckbot-9000 is logged in")
 
 
-
 #når (social-ovalen) får en besked
 @client.event
 async def on_message(message):
