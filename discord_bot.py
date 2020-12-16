@@ -106,18 +106,23 @@ async def on_message(message):
         await general_channel.send(læg_dig)
     await client.process_commands(message)
 
+roast_running = False
 
 @client.command(name = "roast")
 async def roast(context, person):
-    insults = open("insults.txt", "r")
-    lines = insults.readlines()
-    print(len(lines))
-    insults.close()
-    rand = random.randint(0, len(lines))
-    final_roast = str(person) + ", " + str(lines[rand])
-    print(final_roast)
-    general_channel = client.get_channel(671001377899806783)
-    await general_channel.send(final_roast)
+    global roast_running
+    if not roast_running:
+        roast_running = True
+        insults = open("insults.txt", "r")
+        lines = insults.readlines()
+        print(len(lines))
+        insults.close()
+        rand = random.randint(0, len(lines))
+        final_roast = str(person) + ", " + str(lines[rand])
+        print(final_roast)
+        general_channel = client.get_channel(671001377899806783)
+        await general_channel.send(final_roast)
+        roast_running = False
  
         
 
