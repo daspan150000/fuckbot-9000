@@ -126,13 +126,19 @@ async def on_message(message):
 
 
 
-    if message.content.lower().startswith("roast"):
+    if message.content.lower().startswith("--roast"):
         insults = open("insults.txt", "r")
         lines = insults.readlines()
         print(len(lines))
         insults.close()
         person = message.content.split()
-        print(person[1])
+        rand = random.randint(0, len(lines))
+        print(rand)
+        final_roast = str(person[1]) + ", " + lines[rand]
+        general_channel = client.get_channel(message.channel.id)
+        await general_channel.send(final_roast)
+    await client.process_commands(message)
+        
 
 
 
