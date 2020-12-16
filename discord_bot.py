@@ -118,6 +118,9 @@ async def roast(context, person):
     print(final_roast)
     general_channel = client.get_channel(671001377899806783)
     await general_channel.send(final_roast)
+ 
+        
+
     
     
 
