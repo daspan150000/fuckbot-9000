@@ -85,7 +85,7 @@ async def on_message(message):
         com_embed = discord.Embed(title = "kommandoer", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
         com_embed.set_author(name = "fuckbot-9000")
         com_embed.add_field(name = "--version", value = "viser hvilken version botten er i" , inline = False)
-        com_embed.add_field(name = "--slet_besked", value = "sletter bottens sidste 100 beskeder. virker godt mod spam" , inline = False)
+        com_embed.add_field(name = "--roast", value = "denne kommando efterfølges af et navn. den person du nævner vil blive ristet hårdt" , inline = False)
         com_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på \n'fuck dig thomas' er en sætning botten vil reagere på \n'læg dig thomas' kan også bruges for virkelig at vise thomas hvor han høre til." , inline = False)
         com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
         context_chat = client.get_channel(message.channel.id)
