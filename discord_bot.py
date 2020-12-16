@@ -4,19 +4,19 @@
 
 #husk at skrive på requirements
 import discord 
-from discord.ext import commands, tasks
+from discord.ext import tasks
 import os
 import asyncio
 import time
 import random
 import requests
 
-
+ 
 
 
 
 #client med "--" som prefix
-client = commands.Bot(command_prefix = "--")
+client = discord.Client()
 
 #når robotten er klar
 @client.event
@@ -51,15 +51,15 @@ async def on_ready():
 
 
 
-#hjælper funktion
-def is_me(m):
-    return m.author == client.user
-
-#slet beskeder
-@client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
-@commands.has_permissions(manage_messages = True)
-async def slet_besked(ctx):
-    await ctx.channel.purge(limit = 10, check = is_me)
+##hjælper funktion
+#def is_me(m):
+#    return m.author == client.user
+#
+##slet beskeder
+#@client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
+#@commands.has_permissions(manage_messages = True)
+#async def slet_besked(ctx):
+#    await ctx.channel.purge(limit = 10, check = is_me)
 
 
 
@@ -86,10 +86,10 @@ async def slet_besked(ctx):
     
 #671001377899806783
 
-@client.command(name = "ping")
-async def ping(context):
-    general_channel = client.get_channel(context.channel.id)
-    await general_channel.send("pong")
+#@client.command(name = "ping")
+#async def ping(context):
+#    general_channel = client.get_channel(context.channel.id)
+#    await general_channel.send("pong")
     
     
 
@@ -104,7 +104,7 @@ async def on_message(message):
         answer = "ja FUCK dig thomas"
         general_channel = client.get_channel(message.channel.id)
         await general_channel.send(answer)
-    await client.process_commands(message)
+    
 
     #hvis beskeden er "gamer", så skal botten svarer "århh GAMER!"
     if message.content.lower() == "gamer":
@@ -112,7 +112,7 @@ async def on_message(message):
         åh_gamer = "århh GAMER!"
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(åh_gamer)
-    await client.process_commands(message)
+    
     
    
     ned = ["læg dig thomas","læg dig ned thomas","ned thomas"]
@@ -122,7 +122,7 @@ async def on_message(message):
         læg_dig = "Ja læg dig HELT ned og sig undskyld Thomas"
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(læg_dig)
-    await client.process_commands(message)
+    
 
 
 
@@ -137,7 +137,6 @@ async def on_message(message):
         final_roast = str(person[1]) + ", " + lines[rand]
         general_channel = client.get_channel(message.channel.id)
         await general_channel.send(final_roast)
-    await client.process_commands(message)
         
 
 
