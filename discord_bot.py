@@ -126,11 +126,20 @@ async def on_message(message):
 
 
 
+    if message.content.lower().startswith("roast"):
+        insults = open("insults.txt", "r")
+        lines = insults.readlines()
+        print(len(lines))
+        insults.close()
+        person = message.content.split()
+        print(person)
+
+
 
     
  
         
-
+    
     
     
 
