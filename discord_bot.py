@@ -132,7 +132,7 @@ async def on_message(message):
         print(len(lines))
         insults.close()
         person = message.content.split()
-        print(person)
+        print(person[1])
 
 
 
