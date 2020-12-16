@@ -98,18 +98,39 @@ async def on_message(message):
         user_agent = "fuckbotpraw")
 
         subreddit = reddit.subreddit("dankmemes")
-        all_subs = []
-        top = subreddit.top(limit = 50)
-        for submission in top:
-            all_subs.append(submission)
+        all_meme_subs = []
+        top_memes = subreddit.top(limit = 50)
+        for meme_submission in top_memes:
+            all_meme_subs.append(meme_submission)
 
-        random_sub = random.choice(all_subs)
-        name = random_sub.title
-        url = random_sub.url
-        em = discord.Embed(title = name)
-        em.set_image(url = url)
+        random_meme_sub = random.choice(all_meme_subs)
+        meme_name = random_meme_sub.title
+        meme_url = random_meme_sub.url
+        meme_em = discord.Embed(title = meme_name)
+        meme_em.set_image(url = meme_url)
         context_chat = client.get_channel(785602392288788480)
-        await context_chat.send(embed = em)
+        await context_chat.send(embed = meme_em)
+
+    if message.content.lower() == "--cat":
+        reddit = praw.Reddit(client_id = os.environ["reddit_client_id"],
+        client_secret = os.environ["reddit_client_secret"],
+        username = "daspan15000",
+        password = os.environ["pass"],
+        user_agent = "fuckbotpraw")
+
+        subreddit = reddit.subreddit("CatsStandingUp")
+        all_cat_subs = []
+        top_cats = subreddit.top(limit = 50)
+        for cat_submission in top_cats:
+            all_cat_subs.append(cat_submission)
+
+        random_cat_sub = random.choice(all_cat_subs)
+        cat_name = random_cat_sub.title
+        cat_url = random_cat_sub.url
+        cat_em = discord.Embed(title = cat_name)
+        cat_em.set_image(url = cat_url)
+        context_channel = client.get_channel(message.channel.id)
+        await context_channel.send(embed = cat_em)
 
 
 
