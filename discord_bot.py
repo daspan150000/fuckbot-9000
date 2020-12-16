@@ -80,14 +80,14 @@ async def roast(context, person):
         print(rand)
         final_roast = str(person) + ", " + str(lines[rand])
         print(final_roast)
-        general_channel = client.get_channel(671001377899806783)
+        general_channel = client.get_channel(context.channel.id)
         await general_channel.send(final_roast)
     
-
+#671001377899806783
 
 @client.command(name = "ping")
 async def ping(context):
-    general_channel = client.get_channel(671001377899806783)
+    general_channel = client.get_channel(context.channel.id)
     await general_channel.send("pong")
     
     
@@ -101,7 +101,7 @@ async def on_message(message):
     if message.content.lower() in fuck:
         print(message.content)
         answer = "ja FUCK dig thomas"
-        general_channel = client.get_channel(671001377899806783)
+        general_channel = client.get_channel(message.channel.id)
         await general_channel.send(answer)
     await client.process_commands(message)
 
