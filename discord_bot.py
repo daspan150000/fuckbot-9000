@@ -68,12 +68,7 @@ async def on_command_error(context, error):
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
-    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
-    response_json = response.json()
-    insult = response_json["insult"]
-    insults = open("insults.txt", "a")
-    insults.write(insult)
-    insults.close()
+    
 
     
     
@@ -84,11 +79,9 @@ async def on_ready():
 #når (social-ovalen) får en besked
 @client.event
 async def on_message(message):
-    File = open("fuck.txt", "r")
-    read = File.read()
-    File.close()
+    fuck = ["fuck dig thomas","fuck dig thomas!","fuck dig thomas!!"]
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
-    if message.content.lower() in read:
+    if message.content.lower() in fuck:
         print(message.content)
         answer = "ja FUCK dig thomas"
         general_channel = client.get_channel(671001377899806783)
@@ -97,16 +90,17 @@ async def on_message(message):
 
     #hvis beskeden er "gamer", så skal botten svarer "århh GAMER!"
     if message.content.lower() == "gamer":
+        print(message.content)
         åh_gamer = "århh GAMER!"
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(åh_gamer)
     await client.process_commands(message)
     
-    fil = open("læg_dig.txt", "r")
-    læs = fil.read()
-    fil.close()
+   
+    ned = ["læg dig thomas","læg dig ned thomas","ned thomas"]
     #hvis beskeden er "læg dig ned thomas", så skal botten svarer "Ja læg dig HELT ned og sig undskyld Thomas"
-    if message.content.lower() in læs:
+    if message.content.lower() in ned:
+        print(message.content)
         læg_dig = "Ja læg dig HELT ned og sig undskyld Thomas"
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(læg_dig)
@@ -120,11 +114,20 @@ async def roast(context, person):
     print(len(lines))
     insults.close()
     rand = random.randint(0, len(lines))
-    print("thomas " + str(lines[rand]))
+    final_roast = str(person) + ", " + str(lines[rand])
+    print(final_roast)
     general_channel = client.get_channel(671001377899806783)
-    await general_channel.send(str(person) + ", " + str(lines[rand]))
+    await general_channel.send(final_roast)
     
     
+
+    #async def find_insult():
+    #    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
+    #    response_json = response.json()
+    #    insult = response_json["insult"]
+    #    insults = open("insults.txt", "a")
+    #    insults.write(insult)
+    #    insults.close()
   
 
 
