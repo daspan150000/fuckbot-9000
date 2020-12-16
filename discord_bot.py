@@ -64,10 +64,10 @@ async def slet_besked(ctx):
 
 
 #når der sker en fejl
-@client.event
-async def on_command_error(context, error):
-    print(context.command.name + " was invoked incorrectly")
-    print(error)
+#@client.event
+#async def on_command_error(context, error):
+#    print(context.command.name + " was invoked incorrectly")
+#    print(error)
 
 
 #@client.command(name = "roast")
