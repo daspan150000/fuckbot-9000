@@ -72,7 +72,7 @@ async def on_command_error(context, error):
 
 @client.command(name = "roast")
 async def roast(context, person):
-    if context.user != is_me:
+    if context.author != client.user:
         insults = open("insults.txt", "r")
         lines = insults.readlines()
         print(len(lines))
