@@ -77,14 +77,18 @@ async def roast(context, person):
         print(len(lines))
         insults.close()
         rand = random.randint(0, len(lines))
+        print(rand)
         final_roast = str(person) + ", " + str(lines[rand])
         print(final_roast)
         general_channel = client.get_channel(671001377899806783)
         await general_channel.send(final_roast)
     
 
-    
-    
+
+@client.command(name = "ping")
+async def ping(context):
+    general_channel = client.get_channel(671001377899806783)
+    await general_channel.send("pong")
     
     
 
