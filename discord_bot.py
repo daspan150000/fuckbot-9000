@@ -109,7 +109,7 @@ async def on_message(message):
         url = random_sub.url
         em = discord.Embed(title = name)
         em.set_image(url = url)
-        context_chat = client.get_channel(message.channel.id)
+        context_chat = client.get_channel(785602392288788480)
         await context_chat.send(embed = em)
 
 
