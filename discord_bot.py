@@ -13,9 +13,6 @@ import requests
 
  
 
-
-
-#client med "--" som prefix
 client = discord.Client()
 
 #når robotten er klar
@@ -23,75 +20,6 @@ client = discord.Client()
 async def on_ready():
     print("fuckbot-9000 is logged in")
 
-
-#hvis nogen skriver "version" i (social-ovalen)
-#@client.command(name="version")
-#async def version(context):
-#    
-#    myEmbed = discord.Embed(title = "current version", description = "the bot is in version 1.0", color = 0x00ff00)
-#    myEmbed.set_author(name = "fuckbot-9000")
-#    myEmbed.add_field(name = "code version", value = "v1.0.1", inline = False)
-#    myEmbed.add_field(name = "Date Released:", value = "8-12-2020", inline = False)
-#    await context.message.channel.send(embed = myEmbed)
-
-#hvis nogen skriver "hjælp" i (social-ovalen)
-#@client.command(name = "hjælp")
-#async def hjælp(context):
-#    if not context.author.client:
-#        com_embed = discord.Embed(title = "kommandoer", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
-#        com_embed.set_author(name = "fuckbot-9000")
-#        com_embed.add_field(name = "--version", value = "viser hvilken version botten er i" , inline = False)
-#        com_embed.add_field(name = "--slet_besked", value = "sletter bottens sidste 100 beskeder. virker godt mod spam" , inline = False)
-#        com_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på \n'fuck dig thomas' er en sætning botten vil reagere på \n'læg dig thomas' kan også bruges for virkelig at vise thomas hvor han høre til." , inline = False)
-#        com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
-#    await context.message.channel.send(embed = com_embed)
-
-
-
-
-
-
-##hjælper funktion
-#def is_me(m):
-#    return m.author == client.user
-#
-##slet beskeder
-#@client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
-#@commands.has_permissions(manage_messages = True)
-#async def slet_besked(ctx):
-#    await ctx.channel.purge(limit = 10, check = is_me)
-
-
-
-#når der sker en fejl
-#@client.event
-#async def on_command_error(context, error):
-#    print(context.command.name + " was invoked incorrectly")
-#    print(error)
-
-
-#@client.command(name = "roast")
-#async def roast(context, person):
-#    if context.author != client.user:
-#        insults = open("insults.txt", "r")
-#        lines = insults.readlines()
-#        print(len(lines))
-#        insults.close()
-#        rand = random.randint(0, len(lines))
-#        print(rand)
-#        final_roast = str(person) + ", " + str(lines[rand])
-#        print(final_roast)
-#        general_channel = client.get_channel(context.channel.id)
-#        await general_channel.send(final_roast)
-    
-#671001377899806783
-
-#@client.command(name = "ping")
-#async def ping(context):
-#    general_channel = client.get_channel(context.channel.id)
-#    await general_channel.send("pong")
-    
-    
 
 
 #når (social-ovalen) får en besked
@@ -102,16 +30,16 @@ async def on_message(message):
     if message.content.lower() in fuck:
         print(message.content)
         answer = "ja FUCK dig thomas"
-        general_channel = client.get_channel(message.channel.id)
-        await general_channel.send(answer)
+        context_channel = client.get_channel(message.channel.id)
+        await context_channel.send(answer)
     
 
     #hvis beskeden er "gamer", så skal botten svarer "århh GAMER!"
     if message.content.lower() == "gamer":
         print(message.content)
         åh_gamer = "århh GAMER!"
-        general_channel = client.get_channel(671001377899806783)
-        await general_channel.send(åh_gamer)
+        context_channel = client.get_channel(message.channel.id)
+        await context_channel.send(åh_gamer)
     
     
    
@@ -120,8 +48,8 @@ async def on_message(message):
     if message.content.lower() in ned:
         print(message.content)
         læg_dig = "Ja læg dig HELT ned og sig undskyld Thomas"
-        general_channel = client.get_channel(671001377899806783)
-        await general_channel.send(læg_dig)
+        context_channel = client.get_channel(message.channel.id)
+        await context_channel.send(læg_dig)
     
 
 
@@ -135,14 +63,33 @@ async def on_message(message):
         rand = random.randint(0, len(lines))
         print(rand)
         final_roast = str(person[1]) + ", " + lines[rand]
-        general_channel = client.get_channel(message.channel.id)
-        await general_channel.send(final_roast)
-        
+        context_channel = client.get_channel(message.channel.id)
+        await context_channel.send(final_roast)
 
 
+    if message.content.lower() == "--ping":
+        context_channel = client.get_channel(message.channel.id)
+        await context_channel.send("pong")
 
-    
- 
+
+    if message.content.lower() == "--version":
+        myEmbed = discord.Embed(title = "current version", description = "the bot is in version 1.0", color = 0x00ff00)
+        myEmbed.set_author(name = "fuckbot-9000")
+        myEmbed.add_field(name = "code version", value = "v1.0.1", inline = False)
+        myEmbed.add_field(name = "Date Released:", value = "8-12-2020", inline = False)
+        context_channel = client.get_channel(message.channel.id)
+        await context_channel.send(myEmbed)
+
+
+    if message.content.lower() == "--hjælp":
+        com_embed = discord.Embed(title = "kommandoer", description = "disse er kommandoerne du kan bruge med fuckbot-9000", color = 0xFF0000)
+        com_embed.set_author(name = "fuckbot-9000")
+        com_embed.add_field(name = "--version", value = "viser hvilken version botten er i" , inline = False)
+        com_embed.add_field(name = "--slet_besked", value = "sletter bottens sidste 100 beskeder. virker godt mod spam" , inline = False)
+        com_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på \n'fuck dig thomas' er en sætning botten vil reagere på \n'læg dig thomas' kan også bruges for virkelig at vise thomas hvor han høre til." , inline = False)
+        com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
+        context_chat = client.get_channel(message.channel.id)
+        await context_chat.send(com_embed)
         
     
     
@@ -181,3 +128,13 @@ client.loop.create_task(ch_pr())
 #run the client on the server
 client.run(os.environ["discord_token"])
 
+
+##hjælper funktion
+#def is_me(m):
+#    return m.author == client.user
+#
+##slet beskeder
+#@client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
+#@commands.has_permissions(manage_messages = True)
+#async def slet_besked(ctx):
+#    await ctx.channel.purge(limit = 10, check = is_me)
