@@ -18,6 +18,11 @@ import requests
 #client med "--" som prefix
 client = commands.Bot(command_prefix = "--")
 
+#når robotten er klar
+@client.event
+async def on_ready():
+    print("fuckbot-9000 is logged in")
+
 
 #hvis nogen skriver "version" i (social-ovalen)
 @client.command(name="version")
@@ -64,10 +69,7 @@ async def on_command_error(context, error):
     print(error)
 
 
-#når robotten er klar
-@client.event
-async def on_ready():
-    print("fuckbot-9000 is logged in")
+
     
 
     
