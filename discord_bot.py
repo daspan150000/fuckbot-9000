@@ -78,7 +78,7 @@ async def on_message(message):
         myEmbed.add_field(name = "code version", value = "v1.0.1", inline = False)
         myEmbed.add_field(name = "Date Released:", value = "8-12-2020", inline = False)
         context_channel = client.get_channel(message.channel.id)
-        await context_channel.send(myEmbed)
+        await context_channel.send(embed = myEmbed)
 
 
     if message.content.lower() == "--hjælp":
@@ -89,7 +89,7 @@ async def on_message(message):
         com_embed.add_field(name = "botten vil også reagere på visse ord og sætninger.", value = "'gamer' er en af ordene botten reagere på \n'fuck dig thomas' er en sætning botten vil reagere på \n'læg dig thomas' kan også bruges for virkelig at vise thomas hvor han høre til." , inline = False)
         com_embed.add_field(name = "det er ikke vigtigt om du skriver disse sætniger med stort eller småt", value = "så slå dig løs. og fuck thomas." , inline = False)
         context_chat = client.get_channel(message.channel.id)
-        await context_chat.send(com_embed)
+        await context_chat.send(embed = com_embed)
         
     
     
