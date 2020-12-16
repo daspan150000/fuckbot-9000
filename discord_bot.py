@@ -90,39 +90,27 @@ async def on_message(message):
         await context_chat.send(embed = com_embed)
 
     
-    if message.channel.id == "785602392288788480":
-        if message.content.lower() == "--meme":
-            reddit = praw.Reddit(client_id = os.environ["reddit_client_id"],
-            client_secret = os.environ["reddit_client_secret"],
-            username = "daspan15000",
-            password = os.environ["pass"],
-            user_agent = "fuckbotpraw")
+    if message.content.lower() == "--meme":
+        reddit = praw.Reddit(client_id = os.environ["reddit_client_id"],
+        client_secret = os.environ["reddit_client_secret"],
+        username = "daspan15000",
+        password = os.environ["pass"],
+        user_agent = "fuckbotpraw")
 
-            subreddit = reddit.subreddit("memes")
-            all_subs = []
-            top = subreddit.top(limit = 50)
-            for submission in top:
-                all_subs.append(submission)
+        subreddit = reddit.subreddit("memes")
+        all_subs = []
+        top = subreddit.top(limit = 50)
+        for submission in top:
+            all_subs.append(submission)
 
-            random_sub = random.choice(all_subs)
-            name = random_sub.title
-            url = random_sub.url
-            em = discord.Embed(title = name)
-            em.set_image(url = url)
-            context_chat = client.get_channel(785602392288788480)
-            await context_chat.send(embed = em)
+        random_sub = random.choice(all_subs)
+        name = random_sub.title
+        url = random_sub.url
+        em = discord.Embed(title = name)
+        em.set_image(url = url)
+        context_chat = client.get_channel(785602392288788480)
+        await context_chat.send(embed = em)
 
-
-
-
-
-
-        
-
-
-
-
-    
 
 
 
