@@ -28,12 +28,9 @@ async def on_message(message):
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
     if message.content.lower() in fuck:
         print(message.content)
-        myid = '<@173149463886561280>'
-        await message.channel.send('%s ja FUCK dig thomas ' % myid)
-        #thomas_id = "@173149463886561280"
-        #answer = str(thomas_id) + "ja fuck dig thomas"
-        #context_channel = client.get_channel(message.channel.id)
-        #await context_channel.send(answer) 
+        thomas_id = '<@173149463886561280>'
+        await message.channel.send('%s ja FUCK dig thomas ' % thomas_id)
+        
     
 
     #hvis beskeden er "gamer", så skal botten svarer "århh GAMER!"
