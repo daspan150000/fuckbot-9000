@@ -97,7 +97,7 @@ async def on_message(message):
         password = os.environ["pass"],
         user_agent = "fuckbotpraw")
 
-        subreddit = reddit.subreddit("memes")
+        subreddit = reddit.subreddit("dankmemes")
         all_subs = []
         top = subreddit.top(limit = 50)
         for submission in top:
