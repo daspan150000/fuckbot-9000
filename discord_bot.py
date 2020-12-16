@@ -154,7 +154,6 @@ client.loop.create_task(ch_pr())
 
 #671001377899806783 fuck dig thomas
 
-
 #run the client on the server
 client.run(os.environ["discord_token"])
 
