@@ -52,8 +52,6 @@ async def on_message(message):
         await context_channel.send(læg_dig)
     
 
-
-
     if message.content.lower().startswith("--roast"):
         insults = open("insults.txt", "r")
         lines = insults.readlines()
