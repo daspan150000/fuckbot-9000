@@ -58,9 +58,10 @@ def is_me(m):
 #slet beskeder
 @client.command(name="slet_besked", aliases =["slet", "slet_beskeder"])
 @commands.has_permissions(manage_messages = True)
-async def slet_besked(ctx, arg1:int):
-    print(arg1)
-    await ctx.channel.purge(limit = arg1, check = is_me)
+async def slet_besked(ctx):
+    await ctx.channel.purge(limit = 10, check = is_me)
+
+
 
 #når der sker en fejl
 @client.event
@@ -69,7 +70,17 @@ async def on_command_error(context, error):
     print(error)
 
 
-
+@client.command(name = "roast")
+async def roast(context, person):
+        insults = open("insults.txt", "r")
+        lines = insults.readlines()
+        print(len(lines))
+        insults.close()
+        rand = random.randint(0, len(lines))
+        final_roast = str(person) + ", " + str(lines[rand])
+        print(final_roast)
+        general_channel = client.get_channel(671001377899806783)
+        await general_channel.send(final_roast)
     
 
     
@@ -110,20 +121,7 @@ async def on_message(message):
 
 
 
-@client.command(name = "roast")
-async def roast(context, person, times):
-    gange = 0
-    while gange <= times:
-        gange += 1
-        insults = open("insults.txt", "r")
-        lines = insults.readlines()
-        print(len(lines))
-        insults.close()
-        rand = random.randint(0, len(lines))
-        final_roast = str(person) + ", " + str(lines[rand])
-        print(final_roast)
-        general_channel = client.get_channel(671001377899806783)
-        await general_channel.send(final_roast)
+
     
  
         
