@@ -29,7 +29,7 @@ async def on_message(message):
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
     if message.content.lower() in fuck:
         print(message.content)
-        answer = "ja FUCK dig thomas"
+        answer = "@schnurt ja FUCK dig thomas"
         context_channel = client.get_channel(message.channel.id)
         await context_channel.send(answer)
     
