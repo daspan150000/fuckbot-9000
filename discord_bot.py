@@ -46,9 +46,8 @@ async def on_message(message):
     #hvis beskeden er "læg dig ned thomas", så skal botten svarer "Ja læg dig HELT ned og sig undskyld Thomas"
     if message.content.lower() in ned:
         print(message.content)
-        læg_dig = "Ja læg dig HELT ned og sig undskyld Thomas"
-        context_channel = client.get_channel(message.channel.id)
-        await context_channel.send(læg_dig)
+        thomas_id = '<@173149463886561280>'
+        await message.channel.send('%s Ja læg dig HELT ned og sig undskyld Thomas' % thomas_id)
     
 
     if message.content.lower().startswith("--roast"):
