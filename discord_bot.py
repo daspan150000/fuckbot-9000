@@ -148,7 +148,7 @@ async def ch_pr():
     await client.wait_until_ready()
 
     #aktiviteter der starter med "spiller"
-    activities = ["kiks med thomas", "pik", "baseball med thomas løg"]
+    activities = ["kiks med thomas", "pik", "baseball med thomas løg", "'mob thomas', med thomas´ mor", "banjo på thomas´ røvskæg", '"spike" thomas` drink']
 
     while not client.is_closed():
         #vælg en tilfældig aktivitet
