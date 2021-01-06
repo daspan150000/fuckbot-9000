@@ -89,25 +89,18 @@ async def on_message(message):
 
     
     if message.content.lower() == "--meme":
-        reddit = praw.Reddit(client_id = os.environ["reddit_client_id"],
-        client_secret = os.environ["reddit_client_secret"],
-        username = "daspan15000",
-        password = os.environ["pass"],
-        user_agent = "fuckbotpraw")
+        images = []
+        for fil in os.walk("memes"):
+            if fil.endswith(".jpg"):
+                images.append(fil)
+        rand = random.choice(images)
+        image = images[rand]
+        discord_file = discord.File(image)
+        context_channel = client.get_channel(message.channel.id)
+        os.remove(fil)
+        await context_channel.send(file = discord_file)
 
-        subreddit = reddit.subreddit("dankmemes")
-        all_meme_subs = []
-        top_memes = subreddit.top(limit = 50)
-        for meme_submission in top_memes:
-            all_meme_subs.append(meme_submission)
 
-        random_meme_sub = random.choice(all_meme_subs)
-        meme_name = random_meme_sub.title
-        meme_url = random_meme_sub.url
-        meme_em = discord.Embed(title = meme_name)
-        meme_em.set_image(url = meme_url)
-        context_chat = client.get_channel(785602392288788480)
-        await context_chat.send(embed = meme_em)
 
     if message.content.lower() == "--cat":
         reddit = praw.Reddit(client_id = os.environ["reddit_client_id"],
@@ -153,9 +146,9 @@ async def ch_pr():
     while not client.is_closed():
         #vælg en tilfældig aktivitet
         status = random.choice(activities)
-        #skft aktivitet
+        #skift aktivitet
         await client.change_presence(status= discord.Status.do_not_disturb, activity = discord.Game(name = status))
-        #vent en halv time
+        #vent en halv time og gentag
         await asyncio.sleep(1800)
 
 client.loop.create_task(ch_pr())
