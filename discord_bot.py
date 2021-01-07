@@ -99,9 +99,10 @@ async def on_message(message):
         all_meme_subs = []
         top_memes = subreddit.top(limit = 50)
         with open("used_memes.txt", "r") as  used_memes:
-                
             used_memes.readlines()
-            print(used_memes)
+            for line in used_memes:
+                print(line)
+            
             for meme_submission in top_memes:
                 if meme_submission not in used_memes:
                     all_meme_subs.append(meme_submission)
