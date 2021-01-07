@@ -98,7 +98,7 @@ async def on_message(message):
         subreddit = reddit.subreddit("dankmemes")
         all_meme_subs = []
         top_memes = subreddit.top(limit = 50)
-        used_memes = open("used_memes", "r")
+        used_memes = open("used_memes.txt", "r")
         used_memes.readlines()
         print(used_memes)
         for meme_submission in top_memes:
@@ -111,7 +111,7 @@ async def on_message(message):
         random_meme_sub = random.choice(all_meme_subs)
         meme_name = random_meme_sub.title
         meme_url = random_meme_sub.url
-        used_memes = open("used_memes", "a")
+        used_memes = open("used_memes.txt", "a")
         used_memes.write(meme_url + "\n")
         used_memes.close()
 
