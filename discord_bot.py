@@ -93,6 +93,7 @@ async def on_message(message):
         for fil in os.walk("memes"):
             if fil.endswith(".jpg"):
                 images.append(fil)
+                print(fil)
         rand = random.choice(images)
         image = images[rand]
         discord_file = discord.File(image)
