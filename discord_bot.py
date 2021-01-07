@@ -99,6 +99,7 @@ async def on_message(message):
         all_meme_subs = []
         top_memes = subreddit.top(limit = 50)
         used_memes = open("used_memes", "r")
+        print(used_memes)
         for meme_submission in top_memes:
             if meme_submission not in used_memes:
                 all_meme_subs.append(meme_submission)
