@@ -12,7 +12,6 @@ import random
 import requests
 import praw
  
-
 client = discord.Client()
 
 #når robotten er klar
@@ -98,17 +97,13 @@ async def on_message(message):
         subreddit = reddit.subreddit("dankmemes")
         all_meme_subs = []
         top_memes = subreddit.top(limit = 50)
-        with open("used_memes.txt", "r") as  used_memes:
-            used_memes.readlines()
-            for line in used_memes:
-                print(line)
-            
-            for meme_submission in top_memes:
-                if meme_submission not in used_memes:
-                    all_meme_subs.append(meme_submission)
-                else:
-                    pass
-            used_memes.close()
+        used_memes.readlines()
+        for meme_submission in top_memes:
+            if meme_submission not in used_memes:
+                all_meme_subs.append(meme_submission)
+            else:
+                pass
+        used_memes.close()
 
         random_meme_sub = random.choice(all_meme_subs)
         meme_name = random_meme_sub.title
@@ -121,7 +116,6 @@ async def on_message(message):
         meme_em.set_image(url = meme_url)
         context_channel = client.get_channel(message.channel.id)
         await context_channel.send(embed = meme_em)
-
 
 
 
@@ -145,8 +139,6 @@ async def on_message(message):
         cat_em.set_image(url = cat_url)
         context_channel = client.get_channel(message.channel.id)
         await context_channel.send(embed = cat_em)
-
-
 
 
     #async def find_insult():
