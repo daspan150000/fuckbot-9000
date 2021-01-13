@@ -117,7 +117,7 @@ async def on_message(message):
         password = os.environ["pass"],
         user_agent = "fuckbotpraw")
 
-        subreddit = reddit.subreddit("CatsStandingUp")
+        subreddit = reddit.subreddit("cursedcats")
         all_cat_subs = []
         top_cats = subreddit.top(limit = 50)
         for cat_submission in top_cats:
