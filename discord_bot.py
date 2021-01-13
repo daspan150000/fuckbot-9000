@@ -97,6 +97,7 @@ async def on_message(message):
         subreddit = reddit.subreddit("dankmemes")
         all_meme_subs = []
         top_memes = subreddit.top(limit = 50)
+        used_memes = open("used_memes.txt")
         used_memes.readlines()
         for meme_submission in top_memes:
             if meme_submission not in used_memes:
@@ -108,10 +109,6 @@ async def on_message(message):
         random_meme_sub = random.choice(all_meme_subs)
         meme_name = random_meme_sub.title
         meme_url = random_meme_sub.url
-        with open("used_memes.txt", "a") as used_memes:  
-            used_memes.write(meme_url + "\n")
-            used_memes.close()
-
         meme_em = discord.Embed(title = meme_name)
         meme_em.set_image(url = meme_url)
         context_channel = client.get_channel(message.channel.id)
