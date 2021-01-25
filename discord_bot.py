@@ -133,12 +133,7 @@ async def on_message(message):
 
 
     #async def find_insult():
-    #    response = requests.get("https://evilinsult.com/generate_insult.php?lang=en&type=json")
-    #    response_json = response.json()
-    #    insult = response_json["insult"]
-    #    insults = open("insults.txt", "a")
-    #    insults.write(insult)
-    #    insults.close()
+        
   
 
 
