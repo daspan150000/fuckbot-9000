@@ -94,7 +94,7 @@ async def on_message(message):
         password = os.environ["pass"],
         user_agent = "fuckbotpraw")
 
-        subreddit = reddit.subreddit("dankmemes")
+        subreddit = reddit.subreddit("memes")
         all_meme_subs = []
         top_memes = subreddit.top(limit = 50)
         for meme_submission in top_memes:
@@ -115,7 +115,7 @@ async def on_message(message):
         client_secret = os.environ["reddit_client_secret"],
         username = "daspan15000",
         password = os.environ["pass"],
-        user_agent = "fuckbotpraw")
+        user_agent = "fuckbot-9000")
 
         subreddit = reddit.subreddit("cursedcats")
         all_cat_subs = []
@@ -134,7 +134,6 @@ async def on_message(message):
 
     #async def find_insult():
         
-  
 
 
 #skift aktivitet en gang hver halve time
