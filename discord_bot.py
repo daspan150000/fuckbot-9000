@@ -73,12 +73,13 @@ async def on_message(message):
     #hvis beskeden indeholder "uwu" skal der enten tilskrives en counter til brugeren der sendte beskeden. ellers så skal værdien af beskedens senders counter øges.
     message_lower = message.content.lower()
     uwu_amount = message_lower.count("uwu")
-    user = message.author.id
-    server = message.guild.name
     if uwu_amount >= 1:
         with sqlite3.connect("counts.db") as conn:
+            user = message.author.id
+            server = message.guild.name
+            insert = user, server
             cur = conn.cursor()
-            cur.execute("IF EXISTS SELECT amount FROM uwu_counts WHERE user_id = (?) AND server = (?)", user, server )
+            cur.execute("IF EXISTS SELECT amount FROM uwu_counts WHERE user_id = (?) AND server = (?)", insert )
             stored_uwu = cur.fetchall()
             stored_uwu += uwu_amount
             cur.execute("INSERT OR UPDATE counts VALUES uwu_amount = (?)", stored_uwu)
@@ -89,9 +90,11 @@ async def on_message(message):
     fuck = ["fuck dig thomas","fuck dig thomas!","fuck dig thomas!!"]
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
     if message.content.lower() in fuck:
+        user = message.author.id
+        server = message.guild.name
         with sqlite3.conn.cursor() as conn:
             cur = conn.cursor()
-            cur.execute("IF EXISTS SELECT amount FROM fuckdig_counts WHERE user_id = (?) AND server = (?)", user, server )
+            cur.execute("IF EXISTS SELECT amount FROM fuckdig_counts WHERE user_id = (?) AND server = (?)", insert )
             stored_fuck = cur.fetchall()
             stored_fuck += 1
             cur.execute("INSERT OR UPDATE counts VALUES fuckdig_amount = (?)", stored_fuck)
