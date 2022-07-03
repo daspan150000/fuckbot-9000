@@ -37,7 +37,7 @@ import asyncio
 import random
 import praw
 import sqlite3
-import datetime
+from datetime import datetime
  
 #skal fjernes når commands er implementeret.
 client = discord.Client()
@@ -58,7 +58,8 @@ def create_and_populate_db():
 #når botten er klar
 @client.event
 async def on_ready():
-    print(f"fuckbot-9000 is logged in at this time {datetime.now}")
+    now = datetime.now()
+    print(f"fuckbot-9000 is logged in at this time {now}")
     create_and_populate_db()
 
 
