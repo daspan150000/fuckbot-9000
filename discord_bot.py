@@ -74,7 +74,7 @@ async def on_message(message):
     message_lower = message.content.lower()
     uwu_amount = message_lower.count("uwu")
     user = message.author.id
-    server = message.server
+    server = message.guild.name
     if uwu_amount >= 1:
         with sqlite3.connect("counts.db") as conn:
             cur = conn.cursor()
