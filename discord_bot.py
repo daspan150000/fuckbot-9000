@@ -29,6 +29,8 @@
 # jeg kan lave en bot for hver text chat. botterne hedder gamer + et tal.
 # hver bot er programeret med alle de spil jeg kan få programeret ind i botten. 
 
+
+
 #husk at skrive på requirements
 import discord 
 from discord.ext import commands
@@ -51,8 +53,8 @@ new_client = commands.Bot(intents = intents, command_prefix = "--")
 def create_and_populate_db():
     with sqlite3.connect("counts.db") as conn:
             cur = conn.cursor()
-            cur.execute("CREATE TABLE IF NOT EXISTS uwu_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT")
-            cur.execute("CREATE TABLE IF NOT EXISTS fuckdig_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT")
+            cur.execute("CREATE TABLE IF NOT EXISTS uwu_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT)")
+            cur.execute("CREATE TABLE IF NOT EXISTS fuckdig_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT)")
             
 
 #når botten er klar
