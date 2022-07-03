@@ -94,7 +94,7 @@ async def on_message(message):
     if message.content.lower() in fuck:
         user = message.author.id
         server = message.guild.name
-        with sqlite3.connect() as conn:
+        with sqlite3.connect("counts.db") as conn:
             cur = conn.cursor()
             cur.execute("SELECT amount IF EXISTS FROM fuckdig_counts WHERE user_id = (?) AND server = (?)", insert )
             stored_fuck = cur.fetchall()
