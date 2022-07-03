@@ -40,6 +40,8 @@ import random
 import praw
 import sqlite3
 from datetime import datetime
+import firebase_admin
+from firebase_admin import credentials
  
 #skal fjernes når commands er implementeret.
 client = discord.Client()
@@ -92,9 +94,9 @@ async def on_message(message):
     if message.content.lower() in fuck:
         user = message.author.id
         server = message.guild.name
-        with sqlite3.conn.cursor() as conn:
+        with sqlite3.connect() as conn:
             cur = conn.cursor()
-            cur.execute("IF EXISTS SELECT amount FROM fuckdig_counts WHERE user_id = (?) AND server = (?)", insert )
+            cur.execute("SELECT amount IF EXISTS FROM fuckdig_counts WHERE user_id = (?) AND server = (?)", insert )
             stored_fuck = cur.fetchall()
             stored_fuck += 1
             cur.execute("INSERT OR UPDATE counts VALUES fuckdig_amount = (?)", stored_fuck)
