@@ -38,10 +38,8 @@ import os
 import asyncio
 import random
 import praw
-import sqlite3
 from datetime import datetime
-import firebase_admin
-from firebase_admin import credentials
+
  
 #skal fjernes når commands er implementeret.
 client = discord.Client()
@@ -52,11 +50,7 @@ intents.members = True
 new_client = commands.Bot(intents = intents, command_prefix = "--")
 
 
-def create_and_populate_db():
-    with sqlite3.connect("counts.db") as conn:
-            cur = conn.cursor()
-            cur.execute("CREATE TABLE IF NOT EXISTS uwu_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT)")
-            cur.execute("CREATE TABLE IF NOT EXISTS fuckdig_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT)")
+
             
 
 #når botten er klar
@@ -64,7 +58,7 @@ def create_and_populate_db():
 async def on_ready():
     now = datetime.now()
     print(f"fuckbot-9000 is logged in at this time {now}")
-    create_and_populate_db()
+    
 
 
 #når botten får en besked
@@ -76,31 +70,12 @@ async def on_message(message):
     message_lower = message.content.lower()
     uwu_amount = message_lower.count("uwu")
     if uwu_amount >= 1:
-        with sqlite3.connect("counts.db") as conn:
-            user = message.author.id
-            server = message.guild.name
-            insert = user, server
-            cur = conn.cursor()
-            cur.execute("IF EXISTS SELECT amount FROM uwu_counts WHERE user_id = (?) AND server = (?)", insert )
-            stored_uwu = cur.fetchall()
-            stored_uwu += uwu_amount
-            cur.execute("INSERT OR UPDATE counts VALUES uwu_amount = (?)", stored_uwu)
-            conn.commit()
-            print("uwu")
+        pass
 
 
     fuck = ["fuck dig thomas","fuck dig thomas!","fuck dig thomas!!"]
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
     if message.content.lower() in fuck:
-        user = message.author.id
-        server = message.guild.name
-        with sqlite3.connect("counts.db") as conn:
-            cur = conn.cursor()
-            cur.execute("SELECT amount IF EXISTS FROM fuckdig_counts WHERE user_id = (?) AND server = (?)", insert )
-            stored_fuck = cur.fetchall()
-            stored_fuck += 1
-            cur.execute("INSERT OR UPDATE counts VALUES fuckdig_amount = (?)", stored_fuck)
-            conn.commit()
         print(message.content)
         thomas_id = '<@173149463886561280>'
         await message.channel.send('%s ja FUCK dig thomas ' % thomas_id)
