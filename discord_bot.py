@@ -2,30 +2,95 @@
 # social ovalen id: 671001377899806783
 
 
+# ideer til botten eller andre bots:
+#
+#
+# første prioritet, mange af de andre ideer fungerer ikke uden.
+# change over to nextcord
+# refacturer alt koden så det også virker med slash-commands istedet for kun on_message
+#
+# en "UWU" counter.
+#
+# en "fuck dig thomas" counter og en "roast thomas" counter.
+#
+# 
+#
+# en chat med spil i. så kan en (eller flere) personer vælge et spil at spille selv eller imod hinanden.
+#       potentielle spil:
+#                        fantasy rpg (discord dungeons).
+#                        ping pong.
+#                        AK47.
+#                        kryds og bolle.
+#                        hangman.
+#                        
+#                        
+# udførsel af denne ide:
+# 
+# jeg kan lave en bot for hver text chat. botterne hedder gamer + et tal.
+# hver bot er programeret med alle de spil jeg kan få programeret ind i botten. 
+
 #husk at skrive på requirements
 import discord 
-from discord.ext import tasks
+from discord.ext import commands
 import os
 import asyncio
-import time
 import random
-import requests
 import praw
+import sqlite3
  
+#skal fjernes når commands er implementeret.
 client = discord.Client()
 
-#når robotten er klar
+#brug commands i stedet for on_message
+intents = discord.Intents.default()
+intents.members = True
+new_client = commands.Bot(intents = intents, command_prefix = "--")
+
+
+def create_and_populate_db():
+    with sqlite3.connect("counts.db") as conn:
+            cur = conn.cursor()
+            cur.execute("CREATE TABLE IF NOT EXISTS uwu_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT")
+            cur.execute("CREATE TABLE IF NOT EXISTS fuckdig_counts(user_id INT, amount INT DEFAULT 1 NOT NULL, server TEXT")
+            
+
+#når botten er klar
 @client.event
 async def on_ready():
     print("fuckbot-9000 is logged in")
+    create_and_populate_db()
 
 
-#når (social-ovalen) får en besked
+#når botten får en besked
 @client.event
 async def on_message(message):
+    
+    #"uwu" counter.
+    #hvis beskeden indeholder "uwu" skal der enten tilskrives en counter til brugeren der sendte beskeden. ellers så skal værdien af beskedens senders counter øges.
+    message_lower = message.content.lower()
+    uwu_amount = message_lower.count("uwu")
+    user = message.author.id
+    server = message.server
+    if uwu_amount >= 1:
+        with sqlite3.connect("counts.db") as conn:
+            cur = conn.cursor()
+            cur.execute("IF EXISTS SELECT amount FROM uwu_counts WHERE user_id = (?) AND server = (?)", user, server )
+            stored_uwu = cur.fetchall()
+            stored_uwu += uwu_amount
+            cur.execute("INSERT OR UPDATE counts VALUES uwu_amount = (?)", stored_uwu)
+            conn.commit()
+
+
     fuck = ["fuck dig thomas","fuck dig thomas!","fuck dig thomas!!"]
     #hvis den besked er "fuck dig thomas", så skal botten svarer "ja FUCK dig thomas"
     if message.content.lower() in fuck:
+        with sqlite3.conn.cursor() as conn:
+            cur = conn.cursor()
+            cur.execute("IF EXISTS SELECT amount FROM fuckdig_counts WHERE user_id = (?) AND server = (?)", user, server )
+            stored_fuck = cur.fetchall()
+            stored_fuck += 1
+            cur.execute("INSERT OR UPDATE counts VALUES fuckdig_amount = (?)", stored_fuck)
+            conn.commit()
         print(message.content)
         thomas_id = '<@173149463886561280>'
         await message.channel.send('%s ja FUCK dig thomas ' % thomas_id)
@@ -40,7 +105,12 @@ async def on_message(message):
         await context_channel.send(åh_gamer)
     
     
-   
+    
+    
+
+    
+
+
     ned = ["læg dig thomas","læg dig ned thomas","ned thomas"]
     #hvis beskeden er "læg dig ned thomas", så skal botten svarer "Ja læg dig HELT ned og sig undskyld Thomas"
     if message.content.lower() in ned:
@@ -92,7 +162,7 @@ async def on_message(message):
         client_secret = os.environ["reddit_client_secret"],
         username = "daspan15000",
         password = os.environ["pass"],
-        user_agent = "fuckbotpraw")
+        user_agent = "fuckbot-9000")
 
         subreddit = reddit.subreddit("memes")
         all_meme_subs = []
