@@ -79,6 +79,7 @@ async def on_message(message):
             stored_uwu += uwu_amount
             cur.execute("INSERT OR UPDATE counts VALUES uwu_amount = (?)", stored_uwu)
             conn.commit()
+            print("uwu")
 
 
     fuck = ["fuck dig thomas","fuck dig thomas!","fuck dig thomas!!"]
